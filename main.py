@@ -69,10 +69,15 @@ class Membership:
         
         # Calculate the Euclidean distance for each membership tier
         for idx, _ in enumerate(parameter_data):
-            euclidean_dist = round(sqrt((monthly_expense - parameter_data[idx][0])**2 + \
-                                  (monthly_income - parameter_data[idx][1])**2), 2)
+
+            if monthly_expense < monthly_income:
+                euclidean_dist = round(sqrt((monthly_expense - parameter_data[idx][0])**2 + \
+                                            (monthly_income - parameter_data[idx][1])**2), 2)
+                
+                result_tmp.append(euclidean_dist)
             
-            result_tmp.append(euclidean_dist)
+            else:
+                raise Exception("Monthly Income must be greater than Monthly Expense")
         
         # Store the Euclidean distance to a dictionary
         dict_result = {
