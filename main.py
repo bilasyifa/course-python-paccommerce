@@ -107,7 +107,6 @@ class Membership:
         '''
         A method for calculating total price based on its membership tier.
 
-
         Parameter
         ---------
         username (str): existing user username
